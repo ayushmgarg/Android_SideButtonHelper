@@ -1,15 +1,19 @@
 package com.example.sidebuttonhelper.volume;
 
+import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
+import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 
 /**
  * Persistent (ongoing) notification with inline -/+ buttons for one configurable
@@ -80,7 +84,35 @@ public class VolumeNotification {
                 .addAction(android.R.drawable.ic_media_previous, "-", downIntent)
                 .addAction(android.R.drawable.ic_media_next, "+", upIntent);
 
-        NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, builder.build());
+        postNotification(builder);
+    }
+
+    /**
+     * API 33+ requires the runtime POST_NOTIFICATIONS permission before notify() can
+     * succeed; calling it unchecked is a lint MissingPermission error and can silently
+     * no-op (or, on some OEM builds, throw) if the user denied/revoked it. Below API 33
+     * no runtime grant is needed, so it's treated as always allowed.
+     */
+    private boolean hasPostNotificationsPermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            return true;
+        }
+        return ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+                == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void postNotification(NotificationCompat.Builder builder) {
+        if (!hasPostNotificationsPermission()) {
+            // Onboarding (Phase 8) is responsible for requesting this; nothing to show
+            // until the user grants it.
+            return;
+        }
+        try {
+            NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, builder.build());
+        } catch (SecurityException e) {
+            // Defensive: some OEM ROMs misreport/revoke this permission inconsistently
+            // even after checkSelfPermission() returns granted.
+        }
     }
 
     public void cancel() {

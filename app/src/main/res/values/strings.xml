@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SideButtonHelper</string>
+    <string name="accessibility_service_description">Lets you lock the screen with a double-tap,
+        for phones where the power button doesn't work.</string>
+</resources>

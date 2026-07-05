@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TODO (Phase 10): move hardcoded contentDescription strings below into
+     strings.xml / values-hi/strings.xml once i18n pass happens. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/bubble_icon"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/bubble_circle_background"
+        android:padding="14dp"
+        android:src="@android:drawable/ic_lock_silent_mode"
+        android:contentDescription="Volume control bubble"
+        android:elevation="8dp" />
+
+    <LinearLayout
+        android:id="@+id/expanded_panel"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:orientation="vertical"
+        android:background="@drawable/bubble_panel_background"
+        android:padding="12dp"
+        android:visibility="gone"
+        android:elevation="8dp">
+
+        <!-- Ringer mode switch -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <ImageButton
+                android:id="@+id/btn_ringer_normal"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_lock_silent_mode_off"
+                android:contentDescription="Normal ringer mode" />
+
+            <ImageButton
+                android:id="@+id/btn_ringer_vibrate"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_popup_reminder"
+                android:contentDescription="Vibrate ringer mode" />
+
+            <ImageButton
+                android:id="@+id/btn_ringer_silent"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_lock_silent_mode"
+                android:contentDescription="Silent ringer mode" />
+        </LinearLayout>
+
+        <!-- Ring -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+            <ImageButton
+                android:id="@+id/btn_mute_ring"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_lock_silent_mode"
+                android:contentDescription="Mute ring volume" />
+            <SeekBar
+                android:id="@+id/seek_ring"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <!-- Notification -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+            <ImageButton
+                android:id="@+id/btn_mute_notification"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_popup_reminder"
+                android:contentDescription="Mute notification volume" />
+            <SeekBar
+                android:id="@+id/seek_notification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <!-- Alarm -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+            <ImageButton
+                android:id="@+id/btn_mute_alarm"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_lock_idle_alarm"
+                android:contentDescription="Mute alarm volume" />
+            <SeekBar
+                android:id="@+id/seek_alarm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <!-- Media / Music -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+            <ImageButton
+                android:id="@+id/btn_mute_media"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_media_play"
+                android:contentDescription="Mute media volume" />
+            <SeekBar
+                android:id="@+id/seek_media"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <!-- Call -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageButton
+                android:id="@+id/btn_mute_call"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/sym_action_call"
+                android:contentDescription="Mute call volume" />
+            <SeekBar
+                android:id="@+id/seek_call"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

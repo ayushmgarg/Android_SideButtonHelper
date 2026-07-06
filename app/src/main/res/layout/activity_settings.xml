@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap count to lock screen"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupTapCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <RadioButton
+                android:id="@+id/radio2Taps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 taps" />
+
+            <RadioButton
+                android:id="@+id/radio3Taps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="3 taps" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textShakeSensitivityValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shake sensitivity"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <SeekBar
+            android:id="@+id/seekBarShakeSensitivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="25"
+            android:layout_marginBottom="24dp" />
+
+        <Switch
+            android:id="@+id/switchHomeScreenOnly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Only detect taps on home/lock screen"
+            android:layout_marginBottom="16dp" />
+
+        <Switch
+            android:id="@+id/switchExcludeCalls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Disable gesture during calls"
+            android:layout_marginBottom="16dp" />
+
+        <Switch
+            android:id="@+id/switchExcludeCamera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Disable gesture while camera is open"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volume bubble - streams shown"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <Switch
+            android:id="@+id/switchStreamRing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ring" />
+
+        <Switch
+            android:id="@+id/switchStreamNotification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification" />
+
+        <Switch
+            android:id="@+id/switchStreamAlarm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alarm" />
+
+        <Switch
+            android:id="@+id/switchStreamMedia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Media / Music / Video" />
+
+        <Switch
+            android:id="@+id/switchStreamCall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Call"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Language"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnLanguageEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="English" />
+
+            <Button
+                android:id="@+id/btnLanguageHindi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="हिंदी" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

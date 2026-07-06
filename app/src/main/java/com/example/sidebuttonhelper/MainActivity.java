@@ -1,24 +1,100 @@
 package com.example.sidebuttonhelper;
 
+import android.accessibilityservice.AccessibilityServiceInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.view.accessibility.AccessibilityManager;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.sidebuttonhelper.databinding.ActivityMainBinding;
+import com.example.sidebuttonhelper.onboarding.OnboardingActivity;
+import com.example.sidebuttonhelper.service.ShakeWakeService;
+import com.example.sidebuttonhelper.service.TapAccessibilityService;
+import com.example.sidebuttonhelper.settings.SettingsActivity;
+import com.example.sidebuttonhelper.settings.SettingsPrefs;
+import com.example.sidebuttonhelper.volume.VolumeBubbleService;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.btnSetup.setOnClickListener(v ->
+                startActivity(new Intent(this, OnboardingActivity.class)));
+
+        binding.btnSettings.setOnClickListener(v ->
+                startActivity(new Intent(this, SettingsActivity.class)));
+
+        binding.switchMasterEnable.setChecked(SettingsPrefs.isHelperEnabled(this));
+        binding.switchMasterEnable.setOnCheckedChangeListener((btn, isChecked) -> {
+            SettingsPrefs.setHelperEnabled(this, isChecked);
+            if (isChecked) startServices(); else stopServices();
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshStatus();
+    }
+
+    private void startServices() {
+        startForegroundServiceCompat(ShakeWakeService.class);
+        if (Settings.canDrawOverlays(this)) {
+            startForegroundServiceCompat(VolumeBubbleService.class);
+        }
+    }
+
+    private void stopServices() {
+        stopService(new Intent(this, ShakeWakeService.class));
+        stopService(new Intent(this, VolumeBubbleService.class));
+    }
+
+    private void startForegroundServiceCompat(Class<?> serviceClass) {
+        Intent intent = new Intent(this, serviceClass);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(intent);
+        } else {
+            startService(intent);
+        }
+    }
+
+    private void refreshStatus() {
+        boolean accessibilityOn = isAccessibilityServiceEnabled();
+        boolean overlayOn = Settings.canDrawOverlays(this);
+
+        binding.textAccessibilityStatus.setText(
+                accessibilityOn ? "Tap-to-lock: Ready" : "Tap-to-lock: Needs setup");
+        binding.textOverlayStatus.setText(
+                overlayOn ? "Overlay permission: Granted" : "Overlay permission: Needs setup");
+    }
+
+    private boolean isAccessibilityServiceEnabled() {
+        AccessibilityManager am =
+                (AccessibilityManager) getSystemService(Context.ACCESSIBILITY_SERVICE);
+        if (am == null) return false;
+
+        List<AccessibilityServiceInfo> enabledServices =
+                am.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_ALL_MASK);
+
+        String targetId = getPackageName() + "/" + TapAccessibilityService.class.getName();
+
+        for (AccessibilityServiceInfo info : enabledServices) {
+            if (info.getId().equals(targetId)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

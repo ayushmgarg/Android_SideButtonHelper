@@ -38,6 +38,14 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".onboarding.OnboardingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:exported="false" />
+
         <receiver
             android:name=".admin.ScreenLockAdminReceiver"
             android:permission="android.permission.BIND_DEVICE_ADMIN"
@@ -92,8 +100,7 @@
 
         <!--
             Later phases will add here:
-            Phase 8+ -> <activity> OnboardingActivity, SettingsActivity, TestDemoActivity,
-                        OemGuidanceActivity, UninstallHelperActivity
+            Phase 11 -> <activity> TestDemoActivity, OemGuidanceActivity, UninstallHelperActivity
             (ServiceWatchdogWorker needs no manifest entry — WorkManager self-registers)
         -->
 

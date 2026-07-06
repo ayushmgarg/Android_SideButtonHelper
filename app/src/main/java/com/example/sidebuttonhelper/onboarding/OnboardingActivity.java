@@ -28,6 +28,7 @@ import com.example.sidebuttonhelper.MainActivity;
 import com.example.sidebuttonhelper.R;
 import com.example.sidebuttonhelper.admin.ScreenLockAdminReceiver;
 import com.example.sidebuttonhelper.service.ServiceWatchdogWorker;
+import com.example.sidebuttonhelper.service.TapAccessibilityService;
 import com.example.sidebuttonhelper.volume.VolumeNotification;
 
 import java.util.ArrayList;
@@ -95,6 +96,7 @@ public class OnboardingActivity extends AppCompatActivity {
         refreshCurrentStepFragment();
     }
 
+    @SuppressWarnings("deprecation") // checkOpNoThrow needed for API < 29, no replacement exists below Q
     private void buildSteps() {
         steps.add(new OnboardingStep(
                 "Detect Taps",
@@ -104,7 +106,7 @@ public class OnboardingActivity extends AppCompatActivity {
                 context -> {
                     String enabled = Settings.Secure.getString(context.getContentResolver(),
                             Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
-                    String serviceId = context.getPackageName() + "/.service.TapAccessibilityService";
+                    String serviceId = context.getPackageName() + "/" + TapAccessibilityService.class.getName();
                     return enabled != null && enabled.contains(serviceId);
                 },
                 activity -> activity.startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
@@ -126,8 +128,15 @@ public class OnboardingActivity extends AppCompatActivity {
                         + "tap-to-sleep only triggers there — not while you're using other apps.",
                 context -> {
                     AppOpsManager appOps = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
-                    int mode = appOps.unsafeCheckOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,
-                            Process.myUid(), context.getPackageName());
+                    int mode;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        mode = appOps.unsafeCheckOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,
+                                Process.myUid(), context.getPackageName());
+                    } else {
+                        // Deprecated in API 29, but it's the only option on API 26-28 (our minSdk is 26)
+                        mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,
+                                Process.myUid(), context.getPackageName());
+                    }
                     return mode == AppOpsManager.MODE_ALLOWED;
                 },
                 activity -> activity.startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))

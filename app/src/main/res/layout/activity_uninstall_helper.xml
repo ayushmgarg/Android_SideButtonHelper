@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="This app uses Device Admin permission, which blocks normal uninstall. Tap below to safely release that permission first, then continue to uninstall."
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btnRevokeAndUninstall"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Revoke Permissions &amp; Uninstall" />
+
+</LinearLayout>

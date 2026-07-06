@@ -98,11 +98,17 @@
             </intent-filter>
         </receiver>
 
-        <!--
-            Later phases will add here:
-            Phase 11 -> <activity> TestDemoActivity, OemGuidanceActivity, UninstallHelperActivity
-            (ServiceWatchdogWorker needs no manifest entry — WorkManager self-registers)
-        -->
+        <activity
+            android:name=".ui.TestDemoActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.OemGuidanceActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.UninstallHelperActivity"
+            android:exported="false" />
 
     </application>
 

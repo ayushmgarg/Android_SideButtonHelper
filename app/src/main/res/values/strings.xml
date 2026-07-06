@@ -1,4 +1,74 @@
 <resources>
     <string name="app_name">SideButtonHelper</string>
     <string name="accessibility_service_description">Lets you lock the screen with a double-tap, for phones where the power button doesn\'t work.</string>
+
+    <!-- MainActivity -->
+    <string name="main_title">Side Button Helper</string>
+    <string name="enable_helper">Enable Helper</string>
+    <string name="btn_setup">Setup / Grant Permissions</string>
+    <string name="btn_settings">Advanced Settings</string>
+    <string name="status_accessibility_ready">Tap-to-lock: Ready</string>
+    <string name="status_accessibility_needs_setup">Tap-to-lock: Needs setup</string>
+    <string name="status_overlay_granted">Overlay permission: Granted</string>
+    <string name="status_overlay_needs_setup">Overlay permission: Needs setup</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_tap_count_title">Tap count to lock screen</string>
+    <string name="tap_count_2">2 taps</string>
+    <string name="tap_count_3">3 taps</string>
+    <string name="shake_sensitivity_label">Shake sensitivity (%1$.1f)</string>
+    <string name="settings_home_screen_only">Only detect taps on home/lock screen</string>
+    <string name="settings_exclude_calls">Disable gesture during calls</string>
+    <string name="settings_exclude_camera">Disable gesture while camera is open</string>
+    <string name="settings_volume_streams_title">Volume bubble - streams shown</string>
+    <string name="stream_ring">Ring</string>
+    <string name="stream_notification">Notification</string>
+    <string name="stream_alarm">Alarm</string>
+    <string name="stream_media">Media / Music / Video</string>
+    <string name="stream_call">Call</string>
+    <string name="settings_language_title">Language</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">हिंदी</string>
+
+    <!-- TestDemoActivity -->
+    <string name="test_tap_instructions">Tap the box below %1$d times quickly to test lock detection</string>
+    <string name="test_tap_here">Tap here</string>
+    <string name="test_tap_count">Taps detected: %1$d</string>
+    <string name="test_tap_result">Would lock the screen now (demo only \u2014 nothing actually locked)</string>
+    <string name="test_shake_label">Shake test (move the phone now):</string>
+    <string name="test_shake_magnitude">Current: %1$.2f  |  Threshold: %2$.2f%3$s</string>
+    <string name="test_shake_trigger_suffix">  \u2014 would trigger!</string>
+    <string name="test_btn_overlay_check">Check Overlay Permission (for volume bubble)</string>
+
+    <!-- OemGuidanceActivity -->
+    <string name="oem_detected_device">Detected device: %1$s %2$s</string>
+    <string name="oem_instructions_xiaomi">MIUI stops background apps aggressively. Tap below, then enable autostart for this app.</string>
+    <string name="oem_instructions_oppo">ColorOS restricts background apps. Tap below, then allow this app to run in the background.</string>
+    <string name="oem_instructions_vivo">Funtouch OS restricts background apps. Tap below, then enable background/autostart access.</string>
+    <string name="oem_instructions_huawei">EMUI/Magic UI restricts background apps. Tap below, enable \'Manage manually\', then turn on Auto-launch.</string>
+    <string name="oem_instructions_asus">Tap below, then enable auto-start for this app.</string>
+    <string name="oem_instructions_default">Your device (%1$s) doesn\'t usually need extra setup beyond the battery optimization exemption from Setup.</string>
+    <string name="oem_btn_open_settings">Open Background/Autostart Settings</string>
+    <string name="oem_fallback_toast">Couldn\'t find manufacturer settings \u2014 opening app info instead</string>
+
+    <!-- UninstallHelperActivity -->
+    <string name="uninstall_explanation">This app uses Device Admin permission, which blocks normal uninstall. Tap below to safely release that permission first, then continue to uninstall.</string>
+    <string name="uninstall_btn">Revoke Permissions &amp; Uninstall</string>
+    <string name="uninstall_toast">Permissions released. Opening uninstall screen\u2026</string>
+
+    <!-- OnboardingActivity steps -->
+    <string name="onboard_step1_title">Detect Taps</string>
+    <string name="onboard_step1_desc">So the app can tell when you tap the screen to lock it, Android needs Accessibility access. This only watches for tap patterns \u2014 it does not read or record your screen.</string>
+    <string name="onboard_step2_title">Draw Over Other Apps</string>
+    <string name="onboard_step2_desc">This lets the floating volume button appear on top of whatever you\'re doing, so you can change the volume without opening the app.</string>
+    <string name="onboard_step3_title">Usage Access</string>
+    <string name="onboard_step3_desc">This helps the app know when you\'re on the home or lock screen, so tap-to-sleep only triggers there \u2014 not while you\'re using other apps.</string>
+    <string name="onboard_step4_title">Lock the Screen</string>
+    <string name="onboard_step4_desc">Device Admin access lets the app actually lock your screen when you tap. Without it, tap-to-sleep can\'t work.</string>
+    <string name="onboard_step5_title">Keep Running in Background</string>
+    <string name="onboard_step5_desc">Phones try to save battery by stopping apps you\'re not looking at. This exemption keeps shake-to-wake working even after the screen\'s been off for a while.</string>
+    <string name="onboard_step6_title">Silent &amp; Vibrate Mode Control</string>
+    <string name="onboard_step6_desc">To let the volume bubble switch Ring and Notification volume down to silent or vibrate, Android requires Do Not Disturb access.</string>
+    <string name="onboard_step7_title">Show Notifications</string>
+    <string name="onboard_step7_desc">Needed to show the persistent volume control notification with quick +/- buttons.</string>
 </resources>

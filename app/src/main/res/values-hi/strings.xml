@@ -1,0 +1,71 @@
+<resources>
+    <string name="accessibility_service_description">डबल-टैप से स्क्रीन लॉक करने देता है, उन फोनों के लिए जिनका पावर बटन काम नहीं करता।</string>
+
+    <!-- MainActivity -->
+    <string name="main_title">साइड बटन हेल्पर</string>
+    <string name="enable_helper">हेल्पर चालू करें</string>
+    <string name="btn_setup">सेटअप / अनुमतियाँ दें</string>
+    <string name="btn_settings">एडवांस्ड सेटिंग्स</string>
+    <string name="status_accessibility_ready">टैप-टू-लॉक: तैयार</string>
+    <string name="status_accessibility_needs_setup">टैप-टू-लॉक: सेटअप ज़रूरी</string>
+    <string name="status_overlay_granted">ओवरले अनुमति: दी गई</string>
+    <string name="status_overlay_needs_setup">ओवरले अनुमति: सेटअप ज़रूरी</string>
+
+    <!-- SettingsActivity -->
+    <string name="settings_tap_count_title">स्क्रीन लॉक करने के लिए टैप संख्या</string>
+    <string name="tap_count_2">2 टैप</string>
+    <string name="tap_count_3">3 टैप</string>
+    <string name="shake_sensitivity_label">शेक संवेदनशीलता (%1$.1f)</string>
+    <string name="settings_home_screen_only">केवल होम/लॉक स्क्रीन पर टैप पहचानें</string>
+    <string name="settings_exclude_calls">कॉल के दौरान जेस्चर बंद रखें</string>
+    <string name="settings_exclude_camera">कैमरा खुला होने पर जेस्चर बंद रखें</string>
+    <string name="settings_volume_streams_title">वॉल्यूम बबल - दिखाई गई स्ट्रीम</string>
+    <string name="stream_ring">रिंग</string>
+    <string name="stream_notification">नोटिफिकेशन</string>
+    <string name="stream_alarm">अलार्म</string>
+    <string name="stream_media">मीडिया / संगीत / वीडियो</string>
+    <string name="stream_call">कॉल</string>
+    <string name="settings_language_title">भाषा</string>
+
+    <!-- TestDemoActivity -->
+    <string name="test_tap_instructions">लॉक जांचने के लिए नीचे बॉक्स पर जल्दी से %1$d बार टैप करें</string>
+    <string name="test_tap_here">यहाँ टैप करें</string>
+    <string name="test_tap_count">टैप गिने गए: %1$d</string>
+    <string name="test_tap_result">अभी स्क्रीन लॉक हो जाती (सिर्फ डेमो \u2014 कुछ भी लॉक नहीं हुआ)</string>
+    <string name="test_shake_label">शेक टेस्ट (अभी फोन हिलाएं):</string>
+    <string name="test_shake_magnitude">वर्तमान: %1$.2f  |  सीमा: %2$.2f%3$s</string>
+    <string name="test_shake_trigger_suffix">  \u2014 अभी ट्रिगर होता!</string>
+    <string name="test_btn_overlay_check">ओवरले अनुमति जांचें (वॉल्यूम बबल के लिए)</string>
+
+    <!-- OemGuidanceActivity -->
+    <string name="oem_detected_device">पहचाना गया डिवाइस: %1$s %2$s</string>
+    <string name="oem_instructions_xiaomi">MIUI बैकग्राउंड ऐप्स को सख्ती से रोकता है। नीचे टैप करें, फिर इस ऐप के लिए ऑटोस्टार्ट चालू करें।</string>
+    <string name="oem_instructions_oppo">ColorOS बैकग्राउंड ऐप्स को सीमित करता है। नीचे टैप करें, फिर इस ऐप को बैकग्राउंड में चलने दें।</string>
+    <string name="oem_instructions_vivo">Funtouch OS बैकग्राउंड ऐप्स को सीमित करता है। नीचे टैप करें, फिर बैकग्राउंड/ऑटोस्टार्ट एक्सेस चालू करें।</string>
+    <string name="oem_instructions_huawei">EMUI/Magic UI बैकग्राउंड ऐप्स को सीमित करता है। नीचे टैप करें, \'मैन्युअल रूप से प्रबंधित करें\' चालू करें, फिर ऑटो-लॉन्च चालू करें।</string>
+    <string name="oem_instructions_asus">नीचे टैप करें, फिर इस ऐप के लिए ऑटो-स्टार्ट चालू करें।</string>
+    <string name="oem_instructions_default">आपके डिवाइस (%1$s) को सेटअप की बैटरी ऑप्टिमाइज़ेशन छूट के अलावा आमतौर पर कोई अतिरिक्त सेटअप नहीं चाहिए।</string>
+    <string name="oem_btn_open_settings">बैकग्राउंड/ऑटोस्टार्ट सेटिंग्स खोलें</string>
+    <string name="oem_fallback_toast">निर्माता की सेटिंग्स नहीं मिलीं \u2014 इसके बजाय ऐप जानकारी खोली जा रही है</string>
+
+    <!-- UninstallHelperActivity -->
+    <string name="uninstall_explanation">यह ऐप डिवाइस एडमिन अनुमति का उपयोग करता है, जो सामान्य अनइंस्टॉल को रोकता है। पहले उस अनुमति को सुरक्षित रूप से हटाने के लिए नीचे टैप करें, फिर अनइंस्टॉल जारी रखें।</string>
+    <string name="uninstall_btn">अनुमतियाँ हटाएं और अनइंस्टॉल करें</string>
+    <string name="uninstall_toast">अनुमतियाँ हटा दी गईं। अनइंस्टॉल स्क्रीन खोली जा रही है\u2026</string>
+
+    <!-- OnboardingActivity steps -->
+    <string name="onboard_step1_title">टैप पहचानें</string>
+    <string name="onboard_step1_desc">स्क्रीन लॉक करने के लिए टैप पहचानने के लिए, Android को Accessibility एक्सेस चाहिए। यह सिर्फ टैप पैटर्न देखता है \u2014 यह आपकी स्क्रीन नहीं पढ़ता या रिकॉर्ड नहीं करता।</string>
+    <string name="onboard_step2_title">अन्य ऐप्स के ऊपर दिखाएं</string>
+    <string name="onboard_step2_desc">इससे फ्लोटिंग वॉल्यूम बटन आप जो भी कर रहे हों उसके ऊपर दिखता है, ताकि आप ऐप खोले बिना वॉल्यूम बदल सकें।</string>
+    <string name="onboard_step3_title">उपयोग एक्सेस</string>
+    <string name="onboard_step3_desc">इससे ऐप को पता चलता है कि आप होम या लॉक स्क्रीन पर कब हैं, ताकि टैप-टू-स्लीप केवल वहीं चले \u2014 अन्य ऐप्स इस्तेमाल करते समय नहीं।</string>
+    <string name="onboard_step4_title">स्क्रीन लॉक करें</string>
+    <string name="onboard_step4_desc">डिवाइस एडमिन एक्सेस से ऐप टैप करने पर आपकी स्क्रीन वास्तव में लॉक कर पाता है। इसके बिना टैप-टू-स्लीप काम नहीं करेगा।</string>
+    <string name="onboard_step5_title">बैकग्राउंड में चालू रखें</string>
+    <string name="onboard_step5_desc">फोन बैटरी बचाने के लिए उन ऐप्स को रोकने की कोशिश करते हैं जिन्हें आप नहीं देख रहे। यह छूट शेक-टू-वेक को स्क्रीन बंद रहने के बाद भी चालू रखती है।</string>
+    <string name="onboard_step6_title">साइलेंट और वाइब्रेट मोड नियंत्रण</string>
+    <string name="onboard_step6_desc">वॉल्यूम बबल को रिंग और नोटिफिकेशन वॉल्यूम साइलेंट या वाइब्रेट पर करने देने के लिए, Android को डू नॉट डिस्टर्ब एक्सेस चाहिए।</string>
+    <string name="onboard_step7_title">नोटिफिकेशन दिखाएं</string>
+    <string name="onboard_step7_desc">त्वरित +/- बटन के साथ स्थायी वॉल्यूम नियंत्रण नोटिफिकेशन दिखाने के लिए ज़रूरी।</string>
+</resources>

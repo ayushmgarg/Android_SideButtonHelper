@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tap count to lock screen"
+            android:text="@string/settings_tap_count_title"
             android:textSize="18sp"
             android:layout_marginBottom="8dp" />
 
@@ -27,21 +27,20 @@
                 android:id="@+id/radio2Taps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2 taps" />
+                android:text="@string/tap_count_2" />
 
             <RadioButton
                 android:id="@+id/radio3Taps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:text="3 taps" />
+                android:text="@string/tap_count_3" />
         </RadioGroup>
 
         <TextView
             android:id="@+id/textShakeSensitivityValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shake sensitivity"
             android:textSize="18sp"
             android:layout_marginBottom="8dp" />
 
@@ -56,27 +55,27 @@
             android:id="@+id/switchHomeScreenOnly"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Only detect taps on home/lock screen"
+            android:text="@string/settings_home_screen_only"
             android:layout_marginBottom="16dp" />
 
         <Switch
             android:id="@+id/switchExcludeCalls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Disable gesture during calls"
+            android:text="@string/settings_exclude_calls"
             android:layout_marginBottom="16dp" />
 
         <Switch
             android:id="@+id/switchExcludeCamera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Disable gesture while camera is open"
+            android:text="@string/settings_exclude_camera"
             android:layout_marginBottom="24dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Volume bubble - streams shown"
+            android:text="@string/settings_volume_streams_title"
             android:textSize="18sp"
             android:layout_marginBottom="8dp" />
 
@@ -84,37 +83,37 @@
             android:id="@+id/switchStreamRing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ring" />
+            android:text="@string/stream_ring" />
 
         <Switch
             android:id="@+id/switchStreamNotification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Notification" />
+            android:text="@string/stream_notification" />
 
         <Switch
             android:id="@+id/switchStreamAlarm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Alarm" />
+            android:text="@string/stream_alarm" />
 
         <Switch
             android:id="@+id/switchStreamMedia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Media / Music / Video" />
+            android:text="@string/stream_media" />
 
         <Switch
             android:id="@+id/switchStreamCall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Call"
+            android:text="@string/stream_call"
             android:layout_marginBottom="24dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Language"
+            android:text="@string/settings_language_title"
             android:textSize="18sp"
             android:layout_marginBottom="8dp" />
 
@@ -127,14 +126,14 @@
                 android:id="@+id/btnLanguageEnglish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="English" />
+                android:text="@string/language_english" />
 
             <Button
                 android:id="@+id/btnLanguageHindi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="हिंदी" />
+                android:text="@string/language_hindi" />
         </LinearLayout>
 
     </LinearLayout>

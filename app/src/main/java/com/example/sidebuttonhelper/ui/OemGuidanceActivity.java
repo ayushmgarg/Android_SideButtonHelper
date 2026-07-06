@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sidebuttonhelper.R;
 import com.example.sidebuttonhelper.databinding.ActivityOemGuidanceBinding;
 
 public class OemGuidanceActivity extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class OemGuidanceActivity extends AppCompatActivity {
 
         String manufacturer = Build.MANUFACTURER.toLowerCase();
         binding.textManufacturerDetected.setText(
-                "Detected device: " + Build.MANUFACTURER + " " + Build.MODEL);
+                getString(R.string.oem_detected_device, Build.MANUFACTURER, Build.MODEL));
         binding.textInstructions.setText(instructionsFor(manufacturer));
 
         binding.btnOpenAutostartSettings.setOnClickListener(v -> openAutostartSettings(manufacturer));
@@ -33,18 +34,17 @@ public class OemGuidanceActivity extends AppCompatActivity {
 
     private String instructionsFor(String manufacturer) {
         if (manufacturer.contains("xiaomi")) {
-            return "MIUI stops background apps aggressively. Tap below, then enable autostart for this app.";
+            return getString(R.string.oem_instructions_xiaomi);
         } else if (manufacturer.contains("oppo")) {
-            return "ColorOS restricts background apps. Tap below, then allow this app to run in the background.";
+            return getString(R.string.oem_instructions_oppo);
         } else if (manufacturer.contains("vivo")) {
-            return "Funtouch OS restricts background apps. Tap below, then enable background/autostart access.";
+            return getString(R.string.oem_instructions_vivo);
         } else if (manufacturer.contains("huawei") || manufacturer.contains("honor")) {
-            return "EMUI/Magic UI restricts background apps. Tap below, enable 'Manage manually', then turn on Auto-launch.";
+            return getString(R.string.oem_instructions_huawei);
         } else if (manufacturer.contains("asus")) {
-            return "Tap below, then enable auto-start for this app.";
+            return getString(R.string.oem_instructions_asus);
         } else {
-            return "Your device (" + Build.MANUFACTURER + ") doesn't usually need extra setup beyond the "
-                    + "battery optimization exemption from Setup.";
+            return getString(R.string.oem_instructions_default, Build.MANUFACTURER);
         }
     }
 
@@ -77,8 +77,7 @@ public class OemGuidanceActivity extends AppCompatActivity {
     }
 
     private void openAppInfoFallback() {
-        Toast.makeText(this, "Couldn't find manufacturer settings — opening app info instead",
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.oem_fallback_toast, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         intent.setData(Uri.parse("package:" + getPackageName()));
         startActivity(intent);

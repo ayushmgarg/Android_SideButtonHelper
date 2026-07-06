@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sidebuttonhelper.R;
 import com.example.sidebuttonhelper.databinding.ActivityTestDemoBinding;
 import com.example.sidebuttonhelper.settings.SettingsPrefs;
 
@@ -39,8 +40,7 @@ public class TestDemoActivity extends AppCompatActivity implements SensorEventLi
         }
 
         int requiredTaps = SettingsPrefs.getTapCount(this);
-        binding.textTapInstructions.setText(
-                "Tap the box below " + requiredTaps + " times quickly to test lock detection");
+        binding.textTapInstructions.setText(getString(R.string.test_tap_instructions, requiredTaps));
 
         binding.tapTestArea.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -57,11 +57,11 @@ public class TestDemoActivity extends AppCompatActivity implements SensorEventLi
         long now = SystemClock.elapsedRealtime();
         tapCount = (now - lastTapTime > TAP_WINDOW_MS) ? 1 : tapCount + 1;
         lastTapTime = now;
-        binding.textTapCount.setText("Taps detected: " + tapCount);
+        binding.textTapCount.setText(getString(R.string.test_tap_count, tapCount));
 
         if (tapCount >= requiredTaps) {
             tapCount = 0;
-            binding.textTapResult.setText("Would lock the screen now (demo only — nothing actually locked)");
+            binding.textTapResult.setText(R.string.test_tap_result);
         }
     }
 
@@ -89,9 +89,8 @@ public class TestDemoActivity extends AppCompatActivity implements SensorEventLi
         float gForce = (float) Math.sqrt(gX * gX + gY * gY + gZ * gZ);
         float threshold = SettingsPrefs.getShakeThreshold(this);
 
-        binding.textShakeMagnitude.setText(String.format(
-                "Current: %.2f  |  Threshold: %.2f%s",
-                gForce, threshold, gForce > threshold ? "  — would trigger!" : ""));
+        binding.textShakeMagnitude.setText(getString(R.string.test_shake_magnitude,
+                gForce, threshold, gForce > threshold ? getString(R.string.test_shake_trigger_suffix) : ""));
     }
 
     @Override

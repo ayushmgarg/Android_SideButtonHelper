@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Side Button Helper"
+        android:text="@string/main_title"
         android:textSize="26sp"
         android:textStyle="bold"
         android:layout_marginBottom="32dp" />
@@ -18,7 +18,7 @@
         android:id="@+id/switchMasterEnable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enable Helper"
+        android:text="@string/enable_helper"
         android:textSize="22sp"
         android:layout_marginBottom="32dp" />
 
@@ -40,7 +40,7 @@
         android:id="@+id/btnSetup"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="Setup / Grant Permissions"
+        android:text="@string/btn_setup"
         android:textSize="18sp"
         android:layout_marginBottom="16dp" />
 
@@ -48,7 +48,7 @@
         android:id="@+id/btnSettings"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="Advanced Settings"
+        android:text="@string/btn_settings"
         android:textSize="18sp" />
 
 </LinearLayout>

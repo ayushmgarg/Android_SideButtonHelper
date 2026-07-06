@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sidebuttonhelper.R;
 import com.example.sidebuttonhelper.admin.ScreenLockAdminReceiver;
 import com.example.sidebuttonhelper.databinding.ActivityUninstallHelperBinding;
 
@@ -34,7 +35,7 @@ public class UninstallHelperActivity extends AppCompatActivity {
             dpm.removeActiveAdmin(adminComponent);
         }
 
-        Toast.makeText(this, "Permissions released. Opening uninstall screen…", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.uninstall_toast, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + getPackageName()));
         startActivity(intent);

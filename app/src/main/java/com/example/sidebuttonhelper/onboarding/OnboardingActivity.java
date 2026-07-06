@@ -26,6 +26,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.sidebuttonhelper.MainActivity;
 import com.example.sidebuttonhelper.R;
+import com.example.sidebuttonhelper.R;
 import com.example.sidebuttonhelper.admin.ScreenLockAdminReceiver;
 import com.example.sidebuttonhelper.service.ServiceWatchdogWorker;
 import com.example.sidebuttonhelper.service.TapAccessibilityService;
@@ -99,10 +100,8 @@ public class OnboardingActivity extends AppCompatActivity {
     @SuppressWarnings("deprecation") // checkOpNoThrow needed for API < 29, no replacement exists below Q
     private void buildSteps() {
         steps.add(new OnboardingStep(
-                "Detect Taps",
-                "So the app can tell when you tap the screen to lock it, Android needs "
-                        + "Accessibility access. This only watches for tap patterns — it "
-                        + "does not read or record your screen.",
+                getString(R.string.onboard_step1_title),
+                getString(R.string.onboard_step1_desc),
                 context -> {
                     String enabled = Settings.Secure.getString(context.getContentResolver(),
                             Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
@@ -113,9 +112,8 @@ public class OnboardingActivity extends AppCompatActivity {
         ));
 
         steps.add(new OnboardingStep(
-                "Draw Over Other Apps",
-                "This lets the floating volume button appear on top of whatever you're "
-                        + "doing, so you can change the volume without opening the app.",
+                getString(R.string.onboard_step2_title),
+                getString(R.string.onboard_step2_desc),
                 Settings::canDrawOverlays,
                 activity -> activity.startActivity(new Intent(
                         Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
@@ -123,9 +121,8 @@ public class OnboardingActivity extends AppCompatActivity {
         ));
 
         steps.add(new OnboardingStep(
-                "Usage Access",
-                "This helps the app know when you're on the home or lock screen, so "
-                        + "tap-to-sleep only triggers there — not while you're using other apps.",
+                getString(R.string.onboard_step3_title),
+                getString(R.string.onboard_step3_desc),
                 context -> {
                     AppOpsManager appOps = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
                     int mode;
@@ -143,9 +140,8 @@ public class OnboardingActivity extends AppCompatActivity {
         ));
 
         steps.add(new OnboardingStep(
-                "Lock the Screen",
-                "Device Admin access lets the app actually lock your screen when you "
-                        + "tap. Without it, tap-to-sleep can't work.",
+                getString(R.string.onboard_step4_title),
+                getString(R.string.onboard_step4_desc),
                 context -> {
                     DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
                     ComponentName admin = new ComponentName(context, ScreenLockAdminReceiver.class);
@@ -162,10 +158,8 @@ public class OnboardingActivity extends AppCompatActivity {
         ));
 
         steps.add(new OnboardingStep(
-                "Keep Running in Background",
-                "Phones try to save battery by stopping apps you're not looking at. "
-                        + "This exemption keeps shake-to-wake working even after the "
-                        + "screen's been off for a while.",
+                getString(R.string.onboard_step5_title),
+                getString(R.string.onboard_step5_desc),
                 context -> {
                     PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
                     return pm != null && pm.isIgnoringBatteryOptimizations(context.getPackageName());
@@ -178,9 +172,8 @@ public class OnboardingActivity extends AppCompatActivity {
         ));
 
         steps.add(new OnboardingStep(
-                "Silent & Vibrate Mode Control",
-                "To let the volume bubble switch Ring and Notification volume down to "
-                        + "silent or vibrate, Android requires Do Not Disturb access.",
+                getString(R.string.onboard_step6_title),
+                getString(R.string.onboard_step6_desc),
                 context -> {
                     NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
                     return nm != null && nm.isNotificationPolicyAccessGranted();
@@ -190,9 +183,8 @@ public class OnboardingActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             steps.add(new OnboardingStep(
-                    "Show Notifications",
-                    "Needed to show the persistent volume control notification with "
-                            + "quick +/- buttons.",
+                    getString(R.string.onboard_step7_title),
+                    getString(R.string.onboard_step7_desc),
                     context -> ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
                             == PackageManager.PERMISSION_GRANTED,
                     activity -> ActivityCompat.requestPermissions(activity,

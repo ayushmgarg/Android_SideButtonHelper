@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.os.LocaleListCompat;
 
+import com.example.sidebuttonhelper.R;
 import com.example.sidebuttonhelper.databinding.ActivitySettingsBinding;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -95,7 +96,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void updateShakeLabel(float threshold) {
         binding.textShakeSensitivityValue.setText(
-                String.format("Shake sensitivity (%.1f)", threshold));
+                getString(R.string.shake_sensitivity_label, threshold));
     }
 
     private void setAppLanguage(String languageCode) {

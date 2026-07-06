@@ -33,6 +33,7 @@ public class ShakeWakeService extends Service implements SensorEventListener {
 
     private SensorManager sensorManager;
     private Sensor accelerometer;
+    private PowerManager.WakeLock cpuWakeLock;
     private int shakeCount = 0;
     private long lastShakeTime = 0;
     private long lastWakeTriggerTime = 0;
@@ -43,8 +44,19 @@ public class ShakeWakeService extends Service implements SensorEventListener {
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager != null) {
             accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-            sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+            sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_GAME);
         }
+
+        // Without this, the CPU sleeps when the screen is off and accelerometer events
+        // stop arriving entirely - shake detection would silently never fire.
+        // This is the real battery-cost tradeoff of screen-off shake detection.
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        if (powerManager != null) {
+            cpuWakeLock = powerManager.newWakeLock(
+                    PowerManager.PARTIAL_WAKE_LOCK, "SideButtonHelper:ShakeDetectionCpuLock");
+            cpuWakeLock.acquire();
+        }
+
         startForeground(NOTIFICATION_ID, buildNotification());
     }
 
@@ -127,6 +139,9 @@ public class ShakeWakeService extends Service implements SensorEventListener {
         super.onDestroy();
         if (sensorManager != null) {
             sensorManager.unregisterListener(this);
+        }
+        if (cpuWakeLock != null && cpuWakeLock.isHeld()) {
+            cpuWakeLock.release();
         }
     }
 }

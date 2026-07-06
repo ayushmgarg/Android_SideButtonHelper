@@ -9,13 +9,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:text="This app uses Device Admin permission, which blocks normal uninstall. Tap below to safely release that permission first, then continue to uninstall."
+        android:text="@string/uninstall_explanation"
         android:layout_marginBottom="24dp" />
 
     <Button
         android:id="@+id/btnRevokeAndUninstall"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="Revoke Permissions &amp; Uninstall" />
+        android:text="@string/uninstall_btn" />
 
 </LinearLayout>

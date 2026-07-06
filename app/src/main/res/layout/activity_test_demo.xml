@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Tap here"
+            android:text="@string/test_tap_here"
             android:textSize="20sp" />
     </FrameLayout>
 
@@ -44,7 +44,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Shake test (move the phone now):"
+        android:text="@string/test_shake_label"
         android:textSize="18sp"
         android:layout_marginBottom="8dp" />
 
@@ -59,6 +59,6 @@
         android:id="@+id/btnOpenVolumeBubbleTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Check Overlay Permission (for volume bubble)" />
+        android:text="@string/test_btn_overlay_check" />
 
 </LinearLayout>

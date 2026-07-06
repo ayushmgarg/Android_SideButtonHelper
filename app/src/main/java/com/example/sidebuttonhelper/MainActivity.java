@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
         boolean overlayOn = Settings.canDrawOverlays(this);
 
         binding.textAccessibilityStatus.setText(
-                accessibilityOn ? "Tap-to-lock: Ready" : "Tap-to-lock: Needs setup");
+                accessibilityOn ? R.string.status_accessibility_ready : R.string.status_accessibility_needs_setup);
         binding.textOverlayStatus.setText(
-                overlayOn ? "Overlay permission: Granted" : "Overlay permission: Needs setup");
+                overlayOn ? R.string.status_overlay_granted : R.string.status_overlay_needs_setup);
     }
 
     private boolean isAccessibilityServiceEnabled() {
